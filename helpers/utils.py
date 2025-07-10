@@ -1,6 +1,5 @@
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
-# from langchain.tools.tavily_search import TavilySearchResults
 from langchain_tavily import TavilySearch
 from langchain.agents import initialize_agent, Tool
 
@@ -14,7 +13,6 @@ def load_llm():
         timeout=None,
         max_retries=2
     )
-    # search = TavilySearchResults()
     search = TavilySearch()
     tools = [
         Tool(
@@ -37,3 +35,24 @@ def load_previous_question():
         lines = f.readlines()
         conversation = "\n".join(lines)
     return conversation
+
+def humanify(text):
+    llm = load_llm()
+    prompt = f"""
+    You are a skilled language assistant whose sole task is to “humanify” the input text.  
+    Your goal is to preserve every fact, nuance, and detail while rewriting the text so it sounds like a real person speaking.  
+    
+    Guidelines:
+    - Do not add new information, opinions, or examples.  
+    - Maintain the original intent, tone, and structure as closely as possible.  
+    - Use natural phrasing, contractions, and rhythm common in everyday conversation.  
+    - Ensure clarity and readability, avoiding overly formal or robotic language.  
+    
+    Here is the AI-generated text to humanify:
+    ---
+    {text}
+    ---
+    Please respond only with the humanified version, and nothing else.
+    """
+    humanified_text = llm.invoke(prompt)
+    return humanified_text.content
