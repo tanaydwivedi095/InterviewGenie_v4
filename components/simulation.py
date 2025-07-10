@@ -32,7 +32,8 @@ def generate_question(prompt):
     return question.content
 
 def get_answer():
-    pass
+    answer = input("Enter the answer:\n")
+    return asnwer
     
 def save_conversation(previous_conversation, current_question, current_answer=""):
     conversation = f"{previous_conversation}\n\nQuestion: {current_question}\nAnswer: {current_answer}"
