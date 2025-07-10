@@ -29,7 +29,7 @@ def load_llm():
     )
     return agent
 
-def load_previous_question():
+def load_previous_conversation():
     conversation = ""
     with open(r"artifacts\previous_conversation.txt", "r") as f:
         lines = f.readlines()
