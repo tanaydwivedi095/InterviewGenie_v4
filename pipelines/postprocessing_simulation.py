@@ -8,4 +8,4 @@ def postprocessing_pipeline():
         report_dict = get_report_per_question(questions)
         create_report_pdf(report_dict)
     except Exception as e:
-        CustomException(e)
+        raise CustomException(e)
