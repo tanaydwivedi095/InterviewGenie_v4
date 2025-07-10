@@ -5,14 +5,14 @@ def get_conversation():
     try:
         conversation = load_previous_conversation()
     except Exception as e:
-        raise CustomException(e)
+        CustomException(e)
     return conversation
 
 def split_conversation(conversation):
     try:
         questions = conversation.split("Question: ")
     except Exception as e:
-        raise CustomException(e)
+        CustomException(e)
     return questions
 
 def get_report_per_question(questions):
@@ -43,7 +43,7 @@ def get_report_per_question(questions):
             }
         return report
     except Exception as e:
-        raise CustomException(e)
+        CustomException(e)
 
 def create_report_pdf(report: dict, filename: str = r"artifacts/report.pdf"):
     try:
@@ -62,4 +62,4 @@ def create_report_pdf(report: dict, filename: str = r"artifacts/report.pdf"):
             pdf.ln(5)
         pdf.output(filename)
     except Exception as e:
-        raise CustomException(e)
+        CustomException(e)
