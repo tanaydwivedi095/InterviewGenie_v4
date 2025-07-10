@@ -11,7 +11,7 @@ def end_simulation():
         end_script = llm.invoke(prompt)
         return end_script
     except Exception as e:
-        raise CustomException(e)
+        CustomException(e)
     
 def simulation_pipeline():
     try:
@@ -24,5 +24,5 @@ def simulation_pipeline():
             save_conversation(previous_conversation, question, answer)
         print(end_simulation())
     except Exception as e:
-        raise CustomException(e)
+        CustomException(e)
     
