@@ -8,7 +8,7 @@ def preprocessing_pipeline(resume_path=r"dummy_data\resume.pdf", job_description
         features = get_features(resume=resume, job_description=job_description)
         return features
     except Exception as e:
-        raise CustomException(e)
+        CustomException(e)
 
 if __name__ == "__main__":
     print(preprocessing_pipeline())
