@@ -31,6 +31,9 @@ def generate_question(prompt):
     question = llm.invoke(prompt)
     return question.content
 
+def get_answer():
+    pass
+    
 def save_conversation(previous_conversation, current_question, current_answer=""):
     conversation = f"{previous_conversation}\n\nQuestion: {current_question}\nAnswer: {current_answer}"
     with open(r"artifacts\previous_conversation.txt", "w") as f:
